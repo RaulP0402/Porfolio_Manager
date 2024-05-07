@@ -1,7 +1,7 @@
 import { Box, useMediaQuery } from '@mui/material';
-import DashboardBox from "@/components/DashboardBox"
-
-type Props = {}
+import Row1 from './row1';
+import Row2 from './row2';
+import Row3 from './row3';
 
 const gridTemplateLargeScreens = `
     "a b c"
@@ -49,7 +49,7 @@ const gridTemplateSmallScreens = `
     "j"
 `
 
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
     const isAboveMediumScreens = useMediaQuery("(min-width:1200px)");
 
     return (
@@ -66,16 +66,9 @@ const Dashboard = (props: Props) => {
         }
     }
     > 
-        <DashboardBox  gridArea="a"></DashboardBox> 
-        <DashboardBox  gridArea="b"></DashboardBox> 
-        <DashboardBox  gridArea="c"></DashboardBox> 
-        <DashboardBox  gridArea="d"></DashboardBox> 
-        <DashboardBox  gridArea="e"></DashboardBox> 
-        <DashboardBox  gridArea="f"></DashboardBox> 
-        <DashboardBox  gridArea="g"></DashboardBox> 
-        <DashboardBox  gridArea="h"></DashboardBox> 
-        <DashboardBox  gridArea="i"></DashboardBox> 
-        <DashboardBox  gridArea="j"></DashboardBox> 
+        <Row1 /> 
+        <Row2 />
+        <Row3 />
     </Box>
     );
 }
