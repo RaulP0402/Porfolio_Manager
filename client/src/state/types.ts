@@ -1,0 +1,31 @@
+export interface Holdings {
+    id: string;
+    ticker: string;
+    quantity: number;
+}
+
+export interface Month {
+    id: string;
+    month: string;
+    profit: number;
+    loss: number;
+    capitolAllocated: number;
+    capitolStored: number;
+}
+
+export interface Week {
+    id: string;
+    date: string;
+    profit: number;
+    loss: number;
+}
+
+export interface GetKpisResponse {
+    id: string;
+    _id: string;
+    __v: number;
+    capitol: number;
+    holdings: Array<Holdings>;
+    monthlyData: Array<Month>;
+    weeklyData: Array<Week>;
+}   
