@@ -2,6 +2,7 @@ export interface Holdings {
     id: string;
     ticker: string;
     quantity: number;
+    avgPurchasePrice: number;
 }
 
 export interface Month {
@@ -28,4 +29,29 @@ export interface GetKpisResponse {
     holdings: Array<Holdings>;
     monthlyData: Array<Month>;
     weeklyData: Array<Week>;
+    createdAt: string;
+    updatedAt: string;
 }   
+
+
+export interface GetSharesResponse {
+    id: string;
+    _id: string;
+    __v: number;
+    ticker: string;
+    purchasePrice: number;
+    transactions: Array<string>;
+    createdAt: string;
+    updatedAt: string;
+}   
+
+export interface getTransactionsResponse {
+    id: string;
+    _id: string;
+    __v: number;
+    amount: number;
+    buyer: string;
+    shareIds: Array<string>;
+    createdAt: string;
+    updatedAt: string;
+}

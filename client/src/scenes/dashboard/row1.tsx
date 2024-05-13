@@ -77,8 +77,7 @@ const Row1 = () => {
                 <BoxHeader 
                     title="Monthly Profit/Loss"
                     subtitle="This represents the Monthly PnL of our portfolio"
-                    sideText="PnL: $"
-                    sideNumber= {CalculateMonthPnl}
+                    sideText={`PnL: $${CalculateMonthPnl}`}
                 />
                 <ResponsiveContainer width="100%" height="85%">
                     <AreaChart
@@ -124,8 +123,7 @@ const Row1 = () => {
                 <BoxHeader 
                         title="Weekly Profit/Loss"
                         subtitle="This represents the weekly PnL of our portfolio"
-                        sideText="PnL: $"
-                        sideNumber= {CalculateWeekPnl}
+                        sideText={`PnL: $${CalculateWeekPnl}`}
                     />
                 <ResponsiveContainer width="100%" height="85%">
                     <AreaChart
@@ -171,8 +169,7 @@ const Row1 = () => {
                 <BoxHeader 
                         title="Capitol Allocated"
                         subtitle="This represents total Capitol Allocated from Portfolio"
-                        sideText="%:"
-                        sideNumber= {calculateMonthCapitolAllocation}
+                        sideText={`%${calculateMonthCapitolAllocation}`}
                     />
                     <ResponsiveContainer width="100%" height="85%">
                         <AreaChart

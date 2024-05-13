@@ -7,16 +7,15 @@ type Props = {
     title: string; 
     subtitle?: string;
     sideText?: string;
-    sideNumber?: number
 };
 
-const BoxHeader = ({ icon, title, subtitle, sideText, sideNumber }: Props) => {
+const BoxHeader = ({ icon, title, subtitle, sideText }: Props) => {
     const { palette } = useTheme();
 
     return (
         <FlexBetween 
         color={palette.grey[400]} 
-        margin="1.5rem 1.0rem 0.0rem 1.0rem"
+        margin="1.0rem 1.0rem 0.0rem 1.0rem"
         height="10%"
         >
             <FlexBetween>
@@ -29,7 +28,7 @@ const BoxHeader = ({ icon, title, subtitle, sideText, sideNumber }: Props) => {
                 </Box>
             </FlexBetween>
             <Typography variant="h5" fontWeight="700" color={palette.tertiary[500]}>
-                {sideText} {sideNumber}
+                {sideText}
             </Typography>
         </FlexBetween>
     )
