@@ -6,6 +6,8 @@ import { useMemo } from 'react';
 import BoxHeader from '@/components/BoxHeader';
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 import { GetSharesResponse } from '@/state/types';
+import InputBox from '@/components/InputBox';
+
 
 function findObjectId(array: GetSharesResponse[] | undefined, id: string | unknown): GetSharesResponse | undefined {
     if (array == undefined) {
@@ -21,10 +23,10 @@ function findObjectId(array: GetSharesResponse[] | undefined, id: string | unkno
 const Row2 = () => {
     const { palette } = useTheme();
     const { data: sharesData } = useGetSharesQuery();
-    console.log("Shares Data", sharesData);
     const { data: KpiData } = useGetKpisQuery();
-    const { data: transactionsData } = useGetTransactionsQuery();
-
+    const { data: transactionsData } = useGetTransactionsQuery();    
+    
+    console.log("Transactions ", transactionsData);
 
     const pieData = useMemo(() => {
         return (
@@ -45,6 +47,21 @@ const Row2 = () => {
         )
     }, [KpiData]);
 
+    const transactions = useMemo(() => {
+        return (
+            transactionsData &&
+            transactionsData.map(({ _id, amount, buyer, shareIds }) => {
+                return {
+                    id: _id,
+                    _id: _id, 
+                    amount: amount,
+                    buyer: buyer,
+                    shareIds: shareIds
+                }
+            })
+        )
+    }, [transactionsData]);
+
     const holdingColumns = [
         {
             field: "ticker",
@@ -64,7 +81,6 @@ const Row2 = () => {
             renderCell: (params: GridCellParams) => `$${params.value}`,
         }
     ];
-
 
     const transactionColumns = [
         {
@@ -144,7 +160,7 @@ const Row2 = () => {
             <DashboardBox  gridArea="f">
                 <BoxHeader 
                         title= "List of Transactions"
-                        sideText={`${transactionsData?.length} different transactions`}
+                        sideText={`${transactions?.length} different transactions`}
                     />
                 <Box
                     mt="0.5rem"
@@ -170,12 +186,16 @@ const Row2 = () => {
                         columnHeaderHeight={25}
                         rowHeight={35}
                         hideFooter={true}
-                        rows={transactionsData|| []}
+                        rows={transactions || []}
                         columns={transactionColumns}
                     />
                 </Box>
             </DashboardBox>
-            <DashboardBox  gridArea="e"></DashboardBox>
+            <DashboardBox  gridArea="e" display="flex">
+                <InputBox
+                    title='Insert a New Position'
+                />
+            </DashboardBox>
         </>
     );
 };

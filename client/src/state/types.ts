@@ -55,3 +55,11 @@ export interface getTransactionsResponse {
     createdAt: string;
     updatedAt: string;
 }
+
+export interface updateData {
+    id: string;
+    ticker: string;
+    amount: number;
+    quantity: number;
+    buyer: string;
+}

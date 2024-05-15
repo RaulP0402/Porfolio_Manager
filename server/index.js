@@ -8,10 +8,11 @@ import morgan from "morgan";
 import kpiRoutes from "./routes/kpi.js";
 import shareRoutes from "./routes/share.js"
 import transactionRoutes from "./routes/transaction.js";
-import Share from "./models/Share.js";
-import KPI from "./models/KPI.js";
-import Transaction from "./models/Transaction.js";
-import { kpis, shares, transactions } from "./data/data.js";
+import updateRoutes from "./routes/update.js";
+// import Share from "./models/Share.js";
+// import KPI from "./models/KPI.js";
+// import Transaction from "./models/Transaction.js";
+// import { kpis, shares, transactions } from "./data/data.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(cors());
 app.use("/kpi", kpiRoutes);
 app.use("/share", shareRoutes);
 app.use("/transaction", transactionRoutes);
+app.use("/update", updateRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
@@ -38,7 +40,6 @@ mongoose
     })
     .then( async () => {
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-
         /* ADD DATA ONE TIME ONLY OR AS NEEDED */
         // await mongoose.connection.db.dropDatabase();
         // KPI.insertMany(kpis);
